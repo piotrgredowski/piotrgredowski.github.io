@@ -15,7 +15,7 @@ timezone: Europe/Warsaw
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Piotr Grędowski Blog # the main title
+title: Piotr Grędowski - Blog # the main title
 
 tagline: Just random stuff related to programming and not only # it will display as the sub-title
 
