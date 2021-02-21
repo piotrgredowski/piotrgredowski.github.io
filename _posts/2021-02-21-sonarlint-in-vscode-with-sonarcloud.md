@@ -110,7 +110,7 @@ When you have everything installed and have all of keys/tokens - we need to set 
     [Info  - 17:28:46.374] Found 0 issue(s)
     ```
 
-## How it's working
+## How it works
 
 And from now - if SonarLint will find any problems with your opened file, they will be visible in `PROBLEMS` tab in VSCode.
 SonarLint will use exactly the same settings as are used in SonarCloud analysis.
