@@ -18,8 +18,8 @@ Or you can run your linter locally, click on file name - go to faulty line and f
 
 Another example of situation in which linting whole project in VSCode will be
 helpful is when you want to add code linting to the project.
-Then you will have XXX issues to solve and looking into terminal and going line by
-line through problems... It's boring.
+Then you will have XXX issues to solve. You'll have to look into terminal and go
+line by line through problems... It's boring.
 
 In such cases - it's very good to have all problems listed in `PROBLEMS` tab in VSCode.
 Then you can just iterate through them with `Go to Next Problem...` (button `ALT + F8`).
@@ -31,12 +31,11 @@ easily fix it. Then press `ALT + F8` and fix next problem...
 VSCode has support for all linters I use (`tslint`, `pylint`, `flake8`).
 But it runs them only against files which are currently opened.
 
-
 **This post will focus on running `flake8` on whole project.**
 
 ## Task for linting whole project with flake8
 
-```json
+```jsonc
 // tasks.json
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
@@ -78,7 +77,7 @@ But it runs them only against files which are currently opened.
 
 ### What does the definition of task mean?
 
-```json
+```jsonc
 // tasks.json
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
@@ -163,5 +162,5 @@ Now you can iterate through all problems found by `flake8` in whole project with
 
 ## Links
 
-https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave
-https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html
+[https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave)
+[https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html](https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html)
