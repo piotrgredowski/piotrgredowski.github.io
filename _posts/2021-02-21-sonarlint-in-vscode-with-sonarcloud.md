@@ -1,6 +1,6 @@
 ---
 title: SonarCloud integration with VSCode
-date: 2021-02-21 17:02:20 +0100
+date: 2021-02-21 17:26:08 +0100
 categories: [Blogging]
 tags: [vscode, vscode extension, sonarlint, sonarcloud, software development, programming]
 ---
@@ -18,9 +18,9 @@ I just wanted to see all of problems in my code editor, VSCode. Below setup will
 
 - VSCode
 - Access to subscription of SonarCloud
-  - [Organization key]()
-  - [Project(s) key]()
-  - [Token]()
+  - Organization key (look at *How to get organization key from SonarCloud?*)
+  - Project(s) key (look at *How to get project key from SonarCloud?*)
+  - Token (look at *How to generate token at SonarCloud?*)
 - [SonarLint extension for VSCode](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
   - Java Runtime (JRE) 8 or 11
 
@@ -61,7 +61,7 @@ When you have everything installed and have all of keys/tokens - we need to set 
 
    ![Screenshot with connectedMode setting](/assets/img/sonarlint/setting-connectedmode.png)
 
-5. Fill field like below:
+5. Configure it like below:
 
    ```json
     "sonarlint.connectedMode.connections.sonarcloud": [
@@ -69,7 +69,7 @@ When you have everything installed and have all of keys/tokens - we need to set 
         "organizationKey": "<organization_key>",
         "token": "<token>"
       }
-    ],
+    ]
    ```
 
 6. Now open one of your projects analysed by SonarCloud in VSCode
@@ -80,12 +80,10 @@ When you have everything installed and have all of keys/tokens - we need to set 
 
 9. Type `sonarlint.connectedMode.project`.
 10. And click on `Edit in settings.json`.
-11. Fill field like below:
+11. Configure it like below:
 
     ```json
-    {
         "sonarlint.connectedMode.project": "<project_id>"
-    }
     ```
 
     > If not only you in your team are using VSCode as code editor - it may be useful to keep `.vscode/settings.json` file in your repository. Thanks to this you will share your settings with your colleagues via repository.
@@ -99,8 +97,8 @@ When you have everything installed and have all of keys/tokens - we need to set 
     > !/.vscode/launch.json
     > ```
 
-12. You can repeat steps from 6. to 11. for other projects.
-13. To confirm that SonarLint is working - go to some file with code and open command pallette
+12. You can repeat steps from 6 to 11 for other projects.
+13. To confirm that SonarLint is working - open some file with code and open command pallette
     (`CTRL + SHIFT + P`). Then type `SonarLint: Show SonarLint Output` and confirm.
 
     If the output of SonarLint will look like below - analysis is working correctly (number of found issues can differ :)):
@@ -112,8 +110,10 @@ When you have everything installed and have all of keys/tokens - we need to set 
     [Info  - 17:28:46.374] Found 0 issue(s)
     ```
 
+## How it's working
+
 And from now - if SonarLint will find any problems with your opened file, they will be visible in `PROBLEMS` tab in VSCode.
-It will use exactly the same settings as are used in SonarCloud analysis.
+SonarLint will use exactly the same settings as are used in SonarCloud analysis.
 
 ![Lint example](/assets/img/sonarlint/lint-example.png)
 
