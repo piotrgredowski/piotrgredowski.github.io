@@ -108,7 +108,7 @@ But it runs them only against files which are currently opened.
         "owner": "flake8",
         // Name of problem matcher which will show next to problem in PROBLEMS tab
         "source": "flake8-whole-project",
-        // How files with found problems should be located by problem matcher
+        // How paths to files with found problems, should be interpreted by problem matcher
         "fileLocation": ["relative", "${workspaceFolder}"],
         "pattern": {
           // Regular expression used to match found problems
@@ -147,7 +147,7 @@ And from this moment, whenever you will save your `.py` file - task `flake8-whol
 ### One disadvantage: duplicates with additional problem matcher
 
 For now, if you run task and then open file in which one of problems was found -
-there are two references to problem. One is from above task, one from VSCode's
+there are two references to problem in PROBLEMS tab. One is from above task, one from VSCode's
 `flake8` execution.
 And I don't know how to get rid of duplicates.
 
