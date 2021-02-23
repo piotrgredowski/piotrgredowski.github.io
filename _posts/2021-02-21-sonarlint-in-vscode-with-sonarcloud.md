@@ -12,7 +12,8 @@ Sonar analysis is part of our CI pipeline and it gives great tips on how to impr
 
 But my goal was to not have to wait for analysis done and to go to SonarCloud website which will show me results of Sonar analysis.
 
-I just wanted to see all of problems in my code editor, VSCode. Below setup will allow you to see on every opened file results of SonarLint analysis.
+I just wanted to see all of the problems in my code editor, VSCode.
+Below setup will allow you to see on every opened file results of SonarLint analysis.
 
 ## Prerequisites
 
@@ -38,14 +39,16 @@ I just wanted to see all of problems in my code editor, VSCode. Below setup will
 
 ### How to get project key from SonarCloud?
 
-1. Go to [https://sonarcloud.io/projects](https://sonarcloud.io/projects). Find your project - copy project key (bold name visible as headline of each project).
+1. Go to [https://sonarcloud.io/projects](https://sonarcloud.io/projects).
+Find your project - copy project key (bold name visible as headline of each project).
 
 ### How to generate token at SonarCloud?
 
 1. Go to [https://sonarcloud.io/account/security/](https://sonarcloud.io/account/security/)
-2. Name your new token - let it be e.g. `vscode`.
-3. Click generate.
-4. **Save it somewhere!**
+2. Go to `Tokens` tab.
+3. Name your new token - let it be e.g. `vscode`.
+4. Click generate.
+5. **Save it somewhere!**
 
 ## Setup
 
@@ -73,10 +76,10 @@ When you have everything installed and have all of keys/tokens - we need to set 
    ```
 
 6. Now open one of your projects analysed by SonarCloud in VSCode
-7. Go to settings (`CTRL + E`).
+7. Go to settings (`CTRL + ,`).
 8. Choose `Workspace` as a scope of where you want to edit settings.
 
-   Because we want to configure for every project different project ID.
+   Because we want to configure different project ID for every project.
 
 9. Type `sonarlint.connectedMode.project`.
 10. And click on `Edit in settings.json`.
@@ -86,14 +89,14 @@ When you have everything installed and have all of keys/tokens - we need to set 
         "sonarlint.connectedMode.project": "<project_id>"
     ```
 
-    > If not only you in your team are using VSCode as code editor - it may be useful to keep `.vscode/settings.json` file in your repository. Thanks to this you will share your settings with your colleagues via repository.
+    > If not only you in your team is using VSCode as code editor - it may be useful to keep `.vscode/settings.json` file in your repository. Thanks to this, you will share your settings with your colleagues via repository.
     >
     > To keep file in repository (but exclude others from `.vscode` directory), add to `.gitignore` following lines
     >
     > ```none
     > # Exclude VSCode files
     > /.vscode/*
-    > ## But include these
+    > ## But include following
     > !/.vscode/launch.json
     > ```
 
@@ -112,7 +115,8 @@ When you have everything installed and have all of keys/tokens - we need to set 
 
 ## How it works
 
-And from now - if SonarLint will find any problems with your opened file, they will be visible in `PROBLEMS` tab in VSCode.
+And from now - if SonarLint will find any problems with your opened file and they
+will be visible in `PROBLEMS` tab in VSCode.
 SonarLint will use exactly the same settings as are used in SonarCloud analysis.
 
 ![Lint example](/assets/img/sonarlint/lint-example.png)
