@@ -138,7 +138,7 @@ VSCode extension.
 
   ```json
     "triggerTaskOnSave.tasks": {
-      "flake8": ["**/*.*py"]
+      "flake8-whole-project": ["**/*.*py"]
     }
   ```
 
