@@ -160,7 +160,43 @@ But yeah. It's good enough :).
 Now you can iterate through all problems found by `flake8` in whole project with
 `ALT + F8` and fix them!
 
+### Additional tasks
+
+* #### `mypy`
+
+  ```json
+      {
+        "label": "mypy-whole-project",
+        "type": "shell",
+        "command": "source .venv/bin/activate; mypy . --show-column-numbers --show-error-codes --ignore-missing-imports",
+        "presentation": {
+          "echo": true,
+          "reveal": "never",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": false,
+          "clear": true,
+          "revealProblems": "never"
+        },
+        "problemMatcher": {
+          "owner": "mypy",
+          "source": "mypy-whole-project",
+          "fileLocation": ["relative", "${workspaceFolder}"],
+          "pattern": {
+            "regexp": "^([\\w.]+):(\\d+):(\\d+): (\\w+): (.+)  \\[([\\w-]+)\\]$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "code": 6,
+            "severity": 4,
+            "message": 5
+          }
+        }
+      }
+  ```
+
 ## Links
 
 [https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave)
 [https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html](https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html)
+
