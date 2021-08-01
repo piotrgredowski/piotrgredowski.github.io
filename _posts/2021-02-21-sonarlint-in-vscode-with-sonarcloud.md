@@ -3,6 +3,7 @@ title: SonarCloud integration with VSCode
 date: 2021-02-21 17:26:08 +0100
 categories: [Blogging]
 tags: [vscode, vscode extension, sonarlint, sonarcloud, software development, programming]
+comments_id: 2
 ---
 
 ## Intro

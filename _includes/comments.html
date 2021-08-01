@@ -1,0 +1,123 @@
+{% assign issues_repo = site.issues_repo %}
+{% assign issue_id = include.issue_id %}
+<section id="comments">
+    <div class="comment-actions">
+        <h2>Comments <span id="comments-count"></span></h2>
+        <a class="button" href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}">Post comment</a>
+    </div>
+    <div id="comments-wrapper">
+        Loading...
+    </div>
+</section>
+
+<!-- Comments script -->
+
+<script src="https://unpkg.com/marked@0.3.6/marked.min.js"></script>
+<script src="https://unpkg.com/dompurify@1.0.8/dist/purify.min.js"></script>
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+<script src="https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js"></script>
+<!-- Our custom comments script -->
+<script>
+    const loadScript = (src) => {
+        const scriptElement = document.createElement('script');
+        scriptElement.src = src;
+        document.body.appendChild(scriptElement);
+
+        return new Promise((resolve) => {
+            scriptElement.onload = resolve;
+        });
+    };
+
+    const commentScripts = [
+        'https://unpkg.com/marked@0.3.6/marked.min.js',
+        'https://unpkg.com/dompurify@1.0.8/dist/purify.min.js',
+        'https://unpkg.com/dayjs@1.8.21/dayjs.min.js',
+        'https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js'
+    ];
+
+    /**
+     * Returns all comments from the GitHub issues API using the provided issue ID and repo.
+     */
+    const fetchComments = async ({ repo, issueId }) => {
+        return fetch('https://api.github.com/repos/{{ issues_repo }}/issues/{{ issue_id }}/comments').then((blob) => blob.json());
+    };
+
+    /** Renders the given list of comments, converting markdown to HTML. */
+    const renderComments = async (comments) => {
+        dayjs.extend(dayjs_plugin_relativeTime);
+
+        const commentsSection = document.querySelector('#comments');
+        const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
+        const commentsCounter = commentsSection.querySelector('#comments-count');
+        const commentsPlaceholder = commentsSection.querySelector('#comments-wrapper');
+
+        if (comments.length === 0) {
+            commentsPlaceholder.innerHTML = `No comments yet.`;
+            return;
+        }
+
+
+        commentsCounter.innerText = `(${comments.length})`;
+
+        const commentsList = document.createElement('ol');
+        commentsList.className = 'comments-list';
+
+        commentsList.innerHTML = comments
+            .sort((comment1, comment2) => {
+                return comment1.created_at < comment2.created_at ? 1 : -1;
+            })
+            .map((comment) => {
+                const datePosted = dayjs(comment.created_at).fromNow();
+                const user = comment.user;
+                const body = DOMPurify.sanitize(marked(comment.body));
+                const postedByAuthor = comment.author_association === 'OWNER';
+                const edited = comment.created_at !== comment.updated_at;
+
+                return `<li class="comment">
+                    <header class="comment-header" style="display: inline-block">
+                        <div class="comment-meta comment-date-posted">
+                            <!-- <img src="${user.avatar_url}" alt="" aria-hidden="true" class="comment-avatar" style="width: 2rem; border-radius: 50%; margin-right: 0.2em"> -->
+                            <a
+                                href="https://github.com/${user.login}"
+                                class="comment-meta comment-username"
+                            >${user.login}</a>
+                            commented&nbsp;
+                            <time datetime="${comment.created_at}">${datePosted}</time>
+                            ${postedByAuthor ? '<span class="comment-meta tag comment-author-badge">Author</span>' : ''}
+                            ${edited ? `<span class="comment-meta comment-edited">Edited</span>` : ''}
+                        </div>
+                    </header>
+                    <div class="comment-body">${body}</div>
+                </li>`;
+            })
+            .join('');
+
+        commentsWrapper.innerHTML = '';
+        commentsWrapper.appendChild(commentsList);
+    };
+
+    const commentsSection = document.querySelector('#comments');
+    const commentsPlaceholder = document.querySelector('#comments-wrapper');
+    const repo = commentsSection.getAttribute('data-comments-repo');
+    const commentsId = commentsSection.getAttribute('data-comments-id');
+
+    const commentsObserver = new IntersectionObserver(
+        (entries, self) => {
+            entries.forEach(async (entry) => {
+                if (entry.isIntersecting) {
+                    fetchComments({ repo, issueId: commentsId })
+                        .then(renderComments)
+                        .catch((e) => {
+                            console.error(e);
+                            commentsPlaceholder.innerHTML = `Unable to retrieve the comments for this post. Check back later.`;
+                        });
+                    self.unobserve(entry.target);
+                }
+            });
+        },
+        { rootMargin: '200px 0px 0px 0px' }
+    );
+
+    commentsObserver.observe(commentsSection);
+
+</script>
