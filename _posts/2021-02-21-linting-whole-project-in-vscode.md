@@ -149,11 +149,17 @@ And from this moment, whenever you will save your `.py` file - task `flake8-whol
 For now, if you run task and then open file in which one of problems was found -
 there are two references to problem in PROBLEMS tab. One is from above task, one from VSCode's
 `flake8` execution.
-And I don't know how to get rid of duplicates.
-
-But yeah. It's good enough :).
 
 ![Duplicated in VSCode's PROBLEMS tab](/assets/img/linting-whole-project-in-vscode/linter-task-duplicates.png)
+
+~~And I don't know how to get rid of duplicates.~~
+
+EDIT: To get rid of this problem - you can just disable `flake8` in VSCode in your workspace.
+If you have doubled problems in `Problems tab` for `flake8` - just disable it like below:
+
+![Disable flake8 in VSCode](/assets/img/linting-whole-project-in-vscode/disable-flake8.png)
+
+You can do the same thing for other linters in VSCode.
 
 ## Summary
 
@@ -162,7 +168,7 @@ Now you can iterate through all problems found by `flake8` in whole project with
 
 ### Additional tasks
 
-* #### `mypy`
+* `mypy`
 
   ```json
       {
