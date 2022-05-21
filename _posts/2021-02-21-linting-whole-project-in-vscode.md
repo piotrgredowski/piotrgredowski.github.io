@@ -61,7 +61,7 @@ But it runs them only against files which are currently opened.
         "source": "flake8-whole-project",
         "fileLocation": ["relative", "${workspaceFolder}"],
         "pattern": {
-          "regexp": "^(.+):(\\d+):(\\d+): ((\\w)\\d+) (.+)$",
+          "regexp": "^(.+):(\\d+):(\\d+): ((\\w+)\\d+) (.+)$",
           "file": 1,
           "line": 2,
           "column": 3,
@@ -114,7 +114,8 @@ But it runs them only against files which are currently opened.
         "pattern": {
           // Regular expression used to match found problems
           // For details, see https://regex101.com/r/JXYDAE/1
-          "regexp": "^(.+):(\\d+):(\\d+): ((\\w)\\d+) (.+)$",
+          // NOTE: small fix by @aktentasche to make it working with flake8 plugins. Thanks!
+          "regexp": "^(.+):(\\d+):(\\d+): ((\\w+)\\d+) (.+)$",
           "file": 1,
           "line": 2,
           "column": 3,
