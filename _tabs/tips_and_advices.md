@@ -36,3 +36,4 @@ List will be updated over time, when I find something new or old that I really l
 - **Allow yourself to rest**. Burnout is real and it's not worth it.
 - [**You need to be bored**. Sometimes.](https://www.youtube.com/watch?v=orQKfIXMiA8)
 - **Don't believe what you see in the internet**. AI generated content is everywhere. Photos, videos, text. [Be critical.](https://www.youtube.com/watch?v=8s_LnU8mH-Q)
+- **Have your resume/CV up to date**. It's good to have it ready when opportunity knocks. Also it's good to see your achievements in one place.
