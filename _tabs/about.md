@@ -13,7 +13,7 @@ In spare time I play table tennis (not so often lately...), [chess](https://www.
 play tycoon and strategy games (Civilization VI 💖),
 travel and admire Art Nouveau paintings.
 
-### Why I decided to write blog?
+### Why I decided to write blog/have a personal website?
 
 I just wanted to have a place in which I can write down how I solved some problems, how I achieved some goals etc.
 
