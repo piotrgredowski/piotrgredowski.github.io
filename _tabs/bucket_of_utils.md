@@ -1,6 +1,6 @@
 ---
 title: Bucket of utils
-icon: fas fa-bucket
+icon: fas fa-tools
 order: 5
 ---
 
