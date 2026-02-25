@@ -3,7 +3,6 @@ title: Linting whole project in VSCode with flake8
 date: 2021-02-21 19:56:59 +0100
 categories: [Blogging]
 tags: [vscode, vscode extensions, vscode tips, flake8, python, software development, programming]
-comments_id: 1
 ---
 
 ## Intro
@@ -207,4 +206,3 @@ Now you can iterate through all problems found by `flake8` in whole project with
 
 [https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.triggertaskonsave)
 [https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html](https://allisonthackston.com/articles/vscode-tasks-problemmatcher.html)
-

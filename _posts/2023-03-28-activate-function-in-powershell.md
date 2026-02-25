@@ -3,7 +3,6 @@ title: Activating Python virtual environment in PowerShell
 date: 2024-03-28 07:26:08 +0100
 categories: [Blogging]
 tags: [powershell, activate, python, virtualenv, virtual environment, function, shell]
-comments_id: 3
 ---
 
 When I'm working on Windows in the repository where I build executables, I'm usually using two types of virtual environments for my Python development.

@@ -91,6 +91,19 @@ disqus:
   comments: false # boolean type, the global switch for posts comments.
   shortname: "" # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
+giscus:
+  repo: "piotrgredowski/piotrgredowski.github.io"
+  repo_id: "" # Fill with your repository ID from https://giscus.app
+  category: "General"
+  category_id: "" # Fill with your category ID from https://giscus.app
+  mapping: "pathname"
+  strict: "0"
+  reactions_enabled: "1"
+  emit_metadata: "0"
+  input_position: "top"
+  lang: "en"
+  theme: "preferred_color_scheme"
+
 paginate: 10
 
 # ------------ The following options are not recommended to be modified ------------------
@@ -168,5 +181,3 @@ jekyll-archives:
 
 # Outdated configuration warning
 outdated: '-- Missing configuration options! --'
-
-issues_repo: piotrgredowski/piotrgredowski.github.io

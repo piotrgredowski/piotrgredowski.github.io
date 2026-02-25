@@ -132,11 +132,8 @@ layout: default
 
     {% include post-nav.html %}
 
-    <!-- {% if site.disqus.comments and page.comments %}
-      {% include disqus.html %}
-    {% endif %} -->
-    {% if page.comments_id %}
-        {% include comments.html issue_id=page.comments_id %}
+    {% if page.comments %}
+      {% include comments.html %}
     {% endif %}
 
     </div> <!-- #post-extend-wrapper -->
