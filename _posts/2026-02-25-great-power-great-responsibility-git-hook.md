@@ -5,6 +5,8 @@ categories: [Blogging]
 tags: [git, developerexperience, devex, devexp, programming, workflow]
 ---
 
+With great power comes great responsibility - as they say.
+
 ## The accident
 
 On monday, I pushed code directly to `main` without creating a feature branch. This could have resulted in an unintentional deployment to staging. Fortunately, it was only an update to `.gitignore`! ;)
@@ -30,14 +32,23 @@ I have it at `~/.git/hooks/pre-push` and it looks like this:
 ```bash
 #!/bin/sh
 protected_branches="main master"
+
+# Read the refs from stdin
 while read local_ref local_sha remote_ref remote_sha; do
-  branch=$(git rev-parse --symbolic --abbrev-ref "$remote_ref")
-  for protected in $protected_branches; do
-    if [ "$branch" = "$protected" ] && [ "$PUSH_TO_PROTECTED" != "1" ]; then
-      echo "Set PUSH_TO_PROTECTED=1 to push to $protected."
-      exit 1
-    fi
-  done
+    # Extract the branch name from the remote ref
+    branch=$(git rev-parse --symbolic --abbrev-ref "$remote_ref")
+    for protected in $protected_branches; do
+        # Check if the branch is protected and if the environment variable is not set
+        if [ "$branch" = "$protected" ] && [ "$PUSH_TO_PROTECTED" != "1" ]; then
+        echo "Set PUSH_TO_PROTECTED=1 to push to $protected."
+        # Exit with a non-zero status to prevent the push
+        exit 1
+        fi
+    done
 done
 exit 0
 ```
+
+Here you can see it in action:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bZtFwOUnPiE" frameborder="0" allowfullscreen></iframe>

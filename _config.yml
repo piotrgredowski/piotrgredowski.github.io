@@ -93,9 +93,9 @@ disqus:
 
 giscus:
   repo: "piotrgredowski/piotrgredowski.github.io"
-  repo_id: "" # Fill with your repository ID from https://giscus.app
+  repo_id: "MDEwOlJlcG9zaXRvcnkzNDA1MDczODc=" # Fill with your repository ID from https://giscus.app
   category: "General"
-  category_id: "" # Fill with your category ID from https://giscus.app
+  category_id: "DIC_kwDOFEu6-84C3MNu" # Fill with your category ID from https://giscus.app
   mapping: "pathname"
   strict: "0"
   reactions_enabled: "1"
